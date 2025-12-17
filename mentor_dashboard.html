@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentor Dashboard - IMN VINIX7</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        /* Styling Header */
+        .dashboard-header-imn {
+            background-color: #003366; 
+            padding: 15px 0;
+            border-bottom: 3px solid #ff9900;
+        }
+
+        .dashboard-header-imn .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-imn {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Jarak antar logo dan teks */
+        }
+
+        /* Styling Logo agar Berbentuk Lingkaran */
+        .imn-logo-circle, .profile-logo-circle {
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #ff9900;
+            background-color: white;
+        }
+
+        /* FITUR BARU: Dropdown Styling */
+        .profile-wrapper-imn {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-logo-circle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu-imn {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .dropdown-menu-imn a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .dropdown-menu-imn a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show-imn { display: block !important; }
+
+        .header-text-imn {
+            display: flex;
+            flex-direction: column;
+        }
+        /* Gaya tambahan untuk Scheduler dan Modal Pop-up */
+        #scheduler-area {
+            display: none; /* Default hidden */
+        }
+        .modal-content {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        .modal-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .close-btn {
+            float: right;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .data-table button {
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            padding: 0 5px; 
+            font-size: 0.9em;
+        }
+        .data-table .koreksi-btn { color: #ff9900; }
+        .data-table .nilai-btn { color: green; }
+        .data-table .profil-btn { color: #172a3a; }
+    </style>
+</head>
+<body>
+
+<header class="dashboard-header-imn">
+    <div class="container">
+        <div class="header-left-imn">
+            <img src="LOGO/LOGO IMN.jpeg" alt="Logo IMN" class="imn-logo-circle">
+            
+            <div class="profile-wrapper-imn">
+                <img src="LOGO/profil.png" alt="Logo Profil" class="profile-logo-circle" id="profile-img-btn">
+                <div class="dropdown-menu-imn" id="profile-dropdown">
+                    <a href="mentor_profile_detail.html"><span class="material-icons">person</span> Kunjungi Profil</a>
+                    <a href="#" onclick="showModal('Notifikasi Terbaru', 'Mentor')"><span class="material-icons">notifications</span> Notifikasi</a>
+                </div>
+            </div>
+            
+            <div class="header-text-imn">
+                <p style="color: #ff9900; margin: 0; font-weight: bold; font-size: 0.9em;">Portal Mentor Network</p>
+                <h1 style="color: white; margin: 0; font-size: 1.5em;">Selamat Datang, Mentor</h1>
+            </div>
+        </div>
+
+        <div class="header-right-imn">
+            <a href="login.html" style="color: white;"><span class="material-icons">logout</span></a>
+        </div>
+    </div>
+</header>
+
+    <section class="dashboard-imn">
+        <div class="container">
+            
+            <div class="portal-view" id="mentor-view" style="display: block;">
+                <div class="content-panel">
+                    <h4>🗓️ Atur Jadwal Pertemuan Kelas</h4>
+                    <p>Tentukan slot waktu ketersediaan Anda untuk sesi mentoring 1-on-1 atau kelas kelompok.</p>
+                    <button id="calendar-toggle" class="cta-imn-primary small-btn">Buka Kalender</button>
+
+                    <div id="scheduler-area" style="margin-top: 20px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: left;">
+                        <h5>Pilih Tanggal & Waktu Pertemuan</h5>
+                        <div class="schedule-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                            <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                                <strong>Senin, 2 Des 2025</strong>
+                                <p style="margin: 5px 0 0;">Pilihan Waktu:</p>
+                                <input type="radio" name="slot" id="m1" value="mon_1"><label for="m1"> 10:00 - 11:00 WIB</label><br>
+                                <input type="radio" name="slot" id="m2" value="mon_2"><label for="m2"> 13:00 - 14:00 WIB</label>
+                            </div>
+                            <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                                <strong>Rabu, 4 Des 2025</strong>
+                                <p style="margin: 5px 0 0;">Pilihan Waktu:</p>
+                                <input type="radio" name="slot" id="w1" value="wed_1"><label for="w1"> 15:00 - 16:00 WIB</label>
+                            </div>
+                            <div style="padding: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                                <strong>Jumat, 6 Des 2025</strong>
+                                <p style="margin: 5px 0 0;">Pilihan Waktu:</p>
+                                <input type="radio" name="slot" id="f1" value="fri_1"><label for="f1"> 09:00 - 10:00 WIB</label><br>
+                                <input type="radio" name="slot" id="f2" value="fri_2"><label for="f2"> 14:00 - 15:00 WIB</label>
+                            </div>
+                        </div>
+                        <button class="cta-imn-primary" style="margin-top: 20px; width: auto;">Konfirmasi Jadwal</button>
+                    </div>
+                </div>
+
+                <div class="content-panel">
+                    <h4>📊 Data Mahasiswa, Tugas & Materi</h4>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Nama Mahasiswa</th>
+                                <th>Bidang</th>
+                                <th>Tugas Terakhir</th>
+                                <th>Materi Diberikan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Andi P.</td><td>Data Science</td><td>Project 1 (Belum Koreksi)</td><td>Modul Python 3</td><td>
+                                <button class="koreksi-btn" onclick="showModal('Koreksi Tugas', 'Andi P.')">Koreksi</button> | 
+                                <button class="profil-btn" onclick="showModal('Lihat Profil', 'Andi P.')">Lihat Profil</button>
+                            </td></tr>
+                            <tr><td>Bunga S.</td><td>Cybersecurity</td><td>Quiz Modul 3 (Selesai)</td><td>Modul Audit Jaringan</td><td>
+                                <button class="nilai-btn" onclick="showModal('Lihat Nilai', 'Bunga S.')">Lihat Nilai</button> | 
+                                <button class="profil-btn" onclick="showModal('Lihat Profil', 'Bunga S.')">Lihat Profil</button>
+                            </td></tr>
+                            <tr><td>Citra D.</td><td>UI/UX Design</td><td>Wireframing (Belum Koreksi)</td><td>Modul Figma Dasar</td><td>
+                                <button class="koreksi-btn" onclick="showModal('Koreksi Tugas', 'Citra D.')">Koreksi</button> | 
+                                <button class="profil-btn" onclick="showModal('Lihat Profil', 'Citra D.')">Lihat Profil</button>
+                            </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 PT Vinix Seven Aurum | Portal Mentor IMN</p>
+        </div>
+    </footer>
+
+    <div id="actionModal" class="modal-content" onclick="this.style.display='none'">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="document.getElementById('actionModal').style.display='none'">&times;</span>
+            <h4 id="modalTitle" style="color: #172a3a;"></h4>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        /* LOGIKA DROPDOWN PROFIL */
+        const profileBtn = document.getElementById('profile-img-btn');
+        const profileDropdown = document.getElementById('profile-dropdown');
+
+        profileBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            profileDropdown.classList.toggle('show-imn');
+        });
+
+        window.addEventListener('click', function() {
+            profileDropdown.classList.remove('show-imn');
+        });
+
+        function showModal(actionType, studentName) {
+            const modal = document.getElementById('actionModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+            
+            title.textContent = `${actionType} untuk ${studentName}`;
+            body.innerHTML = ''; 
+
+            let content = '';
+
+            // Penambahan logika Notifikasi tanpa merusak fungsi yang lain
+            if (actionType === 'Notifikasi Terbaru') {
+                content = `<ul style="list-style:none; padding:0;">
+                            <li style="padding:10px; border-bottom:1px solid #eee;">🔔 Andi P. mengunggah Project 1.</li>
+                            <li style="padding:10px; border-bottom:1px solid #eee;">🔔 Jadwal kelas besok jam 10:00.</li>
+                           </ul>`;
+            } else if (actionType.includes('Koreksi Tugas')) {
+                content = `<p><strong>Detail Tugas:</strong> Wireframing / Project 1 (Menunggu File Unggahan)</p>
+                            <p><strong>Aksi:</strong><br><input type="file" id="correction-file" style="margin-top: 10px;"><br>
+                            <textarea placeholder="Berikan komentar, feedback, atau nilai di sini..." style="width: 100%; height: 100px; margin-top: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box;"></textarea></p>
+                            <button class="cta-imn-primary" style="width: auto;">Submit Koreksi & Nilai</button>`;
+            } else if (actionType.includes('Lihat Nilai')) {
+                content = `<p><strong>Nilai Rata-rata:</strong> 9.6</p>
+                            <p><strong>Rincian Nilai ${studentName}:</strong></p>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="border-bottom: 1px dashed #eee; padding: 5px 0;">Quiz Modul 1: <strong>90</strong></li>
+                                <li style="border-bottom: 1px dashed #eee; padding: 5px 0;">Tugas Project 1: <strong>98</strong></li>
+                                <li style="padding: 5px 0;">Keaktifan: <strong>100</strong></li>
+                            </ul>`;
+            } else if (actionType.includes('Lihat Profil')) {
+                 const studentData = {
+                    'Andi P.': { bidang: 'Data Science', angkatan: 'Bootcamp Q1 2025' },
+                    'Bunga S.': { bidang: 'Cybersecurity', angkatan: 'Program Magang Batch 3' },
+                    'Citra D.': { bidang: 'UI/UX Design', angkatan: 'Bootcamp Q1 2025' }
+                 }[studentName] || { bidang: 'N/A', angkatan: 'N/A' };
+                 
+                 content = `<p><strong>Nama Lengkap:</strong> ${studentName.replace(' P.', ' Pratama').replace(' S.', ' Sari').replace(' D.', ' Dewi')}</p>
+                             <p><strong>Bidang Studi:</strong> ${studentData.bidang}</p>
+                             <p><strong>Angkatan:</strong> ${studentData.angkatan}</p>
+                             <p><strong>Email:</strong> ${studentName.toLowerCase().replace(' ', '.').replace('.', '')}@vinix7.com</p>
+                             <button class="cta-imn-primary" style="width: auto; background-color: #172a3a;">Hubungi Mahasiswa</button>`;
+            }
+            
+            body.innerHTML = content;
+            modal.style.display = 'flex';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarToggle = document.getElementById('calendar-toggle');
+            const schedulerArea = document.getElementById('scheduler-area');
+
+            // Logika Toggle Kalender
+            calendarToggle.addEventListener('click', function() {
+                if (schedulerArea.style.display === 'none' || schedulerArea.style.display === '') {
+                    schedulerArea.style.display = 'block';
+                    this.textContent = 'Tutup Kalender';
+                } else {
+                    schedulerArea.style.display = 'none';
+                    this.textContent = 'Buka Kalender';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

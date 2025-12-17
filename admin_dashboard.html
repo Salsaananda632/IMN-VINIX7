@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - VINIX7 IMN</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    
+    <style>
+        /* Gaya Khusus Admin Dashboard */
+        .dashboard-header {
+            background-color: #172a3a; /* Warna utama VINIX7 */
+            color: white;
+            padding: 20px 0;
+            text-align: left;
+            border-bottom: 5px solid #ff9900;
+        }
+        .dashboard-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dashboard-header h1 {
+            color: white;
+            margin: 0;
+            font-size: 1.8em;
+        }
+        /* Bagian KPI (Indikator Kinerja Utama) */
+        .admin-kpis {
+            padding: 40px 0;
+            background-color: #f0f0f5;
+        }
+        .kpi-grid {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            text-align: center;
+        }
+        .kpi-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        .kpi-card h3 {
+            margin: 0;
+            font-size: 2.5em;
+            color: #ff9900;
+        }
+        .kpi-card p {
+            margin: 5px 0 0;
+            font-size: 0.9em;
+            color: #555;
+        }
+        /* Bagian Aksi Admin */
+        .admin-actions {
+            padding: 40px 0;
+        }
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .action-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border-top: 5px solid #ff9900; /* Default highlight */
+            text-align: left;
+        }
+        .action-box h4 {
+            color: #172a3a;
+            margin-top: 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .action-box p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .action-box a.cta-imn-primary {
+            font-size: 0.9em;
+            padding: 8px 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header">
+        <div class="container">
+            <h1>Admin Portal - IMN VINIX7</h1>
+            
+            <div class="profile-menu">
+                <div class="profile-icon" id="profile-icon-admin">A</div>
+                <div class="dropdown-content" id="dropdown-admin">
+                    <a href="#">Notifikasi</a> 
+                    <a href="login.html">Keluar (Logout)</a> </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="admin-kpis">
+        <div class="container">
+            <h2>Indikator Kinerja Utama (KPI)</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>24</h3>
+                    <p>Total Mentor Aktif</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>450</h3>
+                    <p>Total Mahasiswa Terdaftar</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>92%</h3>
+                    <p>Rata-rata Tingkat Kelulusan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-actions">
+    <div class="container">
+        <h2>Panel Aksi Cepat</h2>
+        <div class="action-grid">
+            
+            <div class="action-box" style="border-top-color: #ff9900;">
+                <h4>Data & Akun Pengguna</h4>
+                <p>Kelola akses dan data untuk seluruh pengguna portal.</p>
+                <a href="admin_mentor_manage.html" class="cta-imn-primary" style="background-color: #ff9900;">Kelola Akun Mentor</a> 
+                <a href="admin_student_edit.html" class="cta-imn-primary" style="background-color: #ff9900;">Kelola & Edit Daftar Mahasiswa</a> 
+                </div>
+
+            <div class="action-box" style="border-top-color: #007bff;">
+            <h4>Konten & Bantuan Teknis</h4>
+            <p>Perbarui materi pembelajaran dan tangani keluhan pengguna.</p>
+            <a href="admin_complaints_view.html" class="cta-imn-primary" style="background-color: #007bff;">Lihat Daftar Keluhan</a> 
+
+            </div>
+
+            <div class="action-box" style="border-top-color: #28a745;">
+                <h4>Laporan & Analitik</h4>
+                <p>Akses laporan performa Mentor dan Mahasiswa.</p>
+                <a href="admin_edom_report.html" class="cta-imn-primary" style="background-color: #28a745; margin-right: 10px;">EDOM Mentor Report</a> 
+                <a href="admin_progress_report.html" class="cta-imn-primary" style="background-color: #28a745;">Student Progress</a> 
+                <a href="admin_mahasiswa_terbaik.html" class="cta-imn-primary" style="background-color: #28a745;">Mahasiswa Terbaik</a> 
+            </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <p>Admin Portal &copy; 2025 PT Vinix Seven Aurum</p>
+        </div>
+    </footer>
+
+    <script>
+        // JS sederhana untuk toggle dropdown admin
+        document.getElementById('profile-icon-admin').addEventListener('click', function() {
+            document.getElementById('dropdown-admin').classList.toggle('show');
+        });
+
+        // Tutup dropdown jika user mengklik di luar area dropdown
+        window.onclick = function(event) {
+            if (!event.target.matches('#profile-icon-admin') && !event.target.matches('#profile-icon-admin *')) {
+                const dropdown = document.getElementById('dropdown-admin');
+                if (dropdown && dropdown.classList.contains('show')) {
+                    dropdown.classList.remove('show');
+                }
+            }
+        };
+    </script>
+</body>
+</html>

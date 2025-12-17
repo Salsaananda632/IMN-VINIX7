@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Mentor - VINIX7</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    
+    <style>
+        /* Gaya khusus untuk halaman registrasi mentor agar tampilannya fokus di tengah */
+        .registration-page {
+            background-color: #f8f9fa; /* Warna latar belakang ringan */
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+        .registration-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .registration-container h2 {
+            margin-bottom: 20px;
+            color: #172a3a;
+        }
+        .registration-container form input[type="text"],
+        .registration-container form input[type="email"],
+        .registration-container form select,
+        .registration-container form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .small-note {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="registration-page">
+        <div class="registration-container">
+            <h2>Daftarkan Diri Anda Sebagai Mentor</h2>
+            <p>Bergabunglah dengan Industry Mentor Network VINIX7 untuk berbagi pengalaman dan merekrut talenta terbaik.</p>
+            
+            <form action="#" method="POST">
+                <input type="text" name="nama" placeholder="Nama Lengkap" required>
+                <input type="email" name="email" placeholder="Email Kantor Aktif" required>
+                <input type="text" name="perusahaan" placeholder="Perusahaan & Jabatan" required>
+                <select name="keahlian" required>
+                    <option value="">-- Pilih Bidang Keahlian Utama --</option>
+                    <option value="cyber">Cybersecurity & Forensik</option>
+                    <option value="data">Data Science & AI/ML</option>
+                    <option value="data">UI UX & WEB DEV</option>
+                    <option value="blockchain">Blockchain Development</option>
+                    <option value="lainnya">Lainnya</option>
+                </select>
+                <textarea name="pengalaman" placeholder="Jelaskan Pengalaman Anda (min. 5 tahun)" required></textarea>
+                <button type="submit" class="cta-imn-primary">KIRIM PENDAFTARAN</button>
+            </form>
+            
+            <p class="small-note">Kami akan menghubungi Anda dalam 2x24 jam untuk verifikasi.</p>
+            <p style="text-align: center; font-size: 0.9em; margin-top: 25px;"><a href="index.html">← Kembali ke Beranda</a></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>
+                <strong>PT Vinix Seven Aurum:</strong> Kami adalah platform edukasi teknologi terkemuka yang berfokus pada pengembangan talenta digital masa depan Indonesia melalui kurikulum industri dan bimbingan langsung dari profesional.
+            </p>
+            <p>&copy; 2025 PT Vinix Seven Aurum | Membangun Talenta Digital Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <a href="contact.html" class="floating-help-btn">
+        <span class="material-icons">help_outline</span>
+        Bantuan / Hubungi Kami
+    </a>
+
+</body>
+</html>

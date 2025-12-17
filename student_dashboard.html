@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahasiswa Dashboard - IMN VINIX7</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        /* CSS Header agar sesuai dengan Mentor Dashboard */
+        .dashboard-header-imn {
+            background-color: #003366; 
+            padding: 15px 0;
+            border-bottom: 3px solid #ff9900;
+        }
+
+        .dashboard-header-imn .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-left-imn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .imn-logo-circle, .profile-logo-circle {
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 2px solid #ff9900;
+            background-color: white;
+        }
+
+        .profile-wrapper-imn {
+            position: relative;
+            display: inline-block;
+        }
+
+        .profile-logo-circle {
+            cursor: pointer;
+        }
+
+        .dropdown-menu-imn {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 1000;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+
+        .dropdown-menu-imn a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+        }
+
+        .dropdown-menu-imn a:hover { background-color: #f1f1f1; }
+        .show-imn { display: block !important; }
+
+        .header-text-imn {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header-right-imn a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* PERBAIKAN KHUSUS: Bagian Pengumuman Penting Terbaru */
+        .announcements-custom {
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .announcements-header-box {
+            background-color: #003366; 
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            border-bottom: 4px solid #ff9900; 
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .announcements-header-box h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .announcements-body-box {
+            background-color: #f4f7f9; 
+            padding: 20px;
+            border-radius: 0 0 8px 8px;
+            border: 1px solid #ddd;
+            border-top: none;
+        }
+
+        .announcement-card {
+            background-color: white !important;
+            border-left: 5px solid #ff9900 !important;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            max-width: 100% !important;
+        }
+
+        .announcement-card h4 {
+            color: #003366;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .announcement-card .date {
+            color: #ff9900;
+            font-weight: bold;
+            font-size: 0.85em;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header class="dashboard-header-imn">
+    <div class="container">
+        <div class="header-left-imn">
+            <img src="LOGO/LOGO IMN.jpeg" alt="Logo IMN" class="imn-logo-circle">
+            
+            <div class="profile-wrapper-imn">
+                <img src="LOGO/profil.png" alt="Logo Profil" class="profile-logo-circle" id="profile-img-btn">
+                <div class="dropdown-menu-imn" id="profile-dropdown">
+                    <a href="student_profile_detail.html"><span class="material-icons">person</span> Kunjungi Profil</a>
+                    <a href="#" id="notif-trigger"><span class="material-icons">notifications</span> Notifikasi</a>
+                </div>
+            </div>
+            
+            <div class="header-text-imn">
+                <p style="color: #ff9900; margin: 0; font-weight: bold; font-size: 0.9em;">Portal Mahasiswa VINIX7</p>
+                <h1 style="color: white; margin: 0; font-size: 1.5em;">Selamat Datang, Mahasiswa</h1>
+            </div>
+        </div>
+
+        <div class="header-right-imn">
+            <a href="login.html"><span class="material-icons" style="font-size: 30px;">logout</span></a>
+        </div>
+    </div>
+</header>
+
+<section class="dashboard-imn">
+    <div class="container">
+
+        <div class="portal-view" id="student-view" style="display: block;">
+            <h3 style="margin-top: 20px;">Selamat Datang di Ruang Belajarmu, Mahasiswa VINIX7!</h3>
+
+            <div class="content-panel primary-bg">
+                <h4>📅 Jadwal Pertemuan Kelas Mendatang</h4>
+                <p><strong>[28 Nov 2025]</strong> Cybersecurity: Audit Jaringan Dasar (Pkl. 14.00 WIB) - Link Zoom</p>
+                <p><strong>[01 Des 2025]</strong> Data Science: Q&A Mentor (Pkl. 10.00 WIB) - Link Meet</p>
+            </div>
+            
+            <div class="student-info-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="info-card">
+                    <h4>📤 Tempat Kumpul Tugas</h4>
+                    <p>Tugas Wireframing UI/UX (Deadline: 20 Nov)</p>
+                    <a href="#" class="cta-imn-primary small-btn">Kumpul Sekarang</a>
+                </div>
+                <div class="info-card">
+                    <h4>📚 Materi Pembelajaran</h4>
+                    <p>Modul Terbaru: Blockchain Development 101</p>
+                    <a href="#" class="cta-imn-primary small-btn">Unduh Materi</a>
+                </div>
+                <div class="info-card">
+                    <h4>🎯 Nilai Diperoleh</h4>
+                    <p class="score">95</p>
+                    <p>Rata-rata Nilai Tugas & Quiz</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="announcements-custom">
+            <div class="announcements-header-box">
+                <span class="material-icons">campaign</span>
+                <h3>Pengumuman Penting Terbaru</h3>
+            </div>
+            <div class="announcements-body-box">
+                <div class="announcement-card">
+                    <h4>Wajib: Sesi Orientasi Mahasiswa</h4>
+                    <p>Semua Mahasiswa VINIX7 wajib mengikuti sesi orientasi daring pada tanggal 25 November 2025 pukul 10.00 WIB.</p>
+                    <span class="date">📅 15 Nov 2025</span>
+                </div>
+                <div class="announcement-card">
+                    <h4>Materi Baru: Modul AI Ethics</h4>
+                    <p>Modul tambahan untuk bidang Data Science telah dirilis. Silakan unduh melalui tautan Materi Pembelajaran di atas.</p>
+                    <span class="date">📅 10 Nov 2025</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 PT Vinix Seven Aurum | Portal Mahasiswa VINIX7</p>
+    </div>
+</footer>
+
+<div id="notif-modal" style="display:none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
+    <div style="background-color: white; margin: 10% auto; padding: 20px; border-radius: 10px; width: 80%; max-width: 400px; border-top: 5px solid #ff9900;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <h3 style="margin: 0; color: #003366;">Notifikasi Terbaru</h3>
+            <span id="close-notif" style="cursor:pointer; font-weight: bold; font-size: 24px;">&times;</span>
+        </div>
+        <div style="padding-top: 15px;">
+            <p style="padding: 10px; background: #f9f9f9; border-left: 3px solid #003366; margin-bottom: 10px;">🔔 Absensi hari ini telah dibuka!</p>
+            <p style="padding: 10px; background: #f9f9f9; border-left: 3px solid #003366; margin-bottom: 10px;">🔔 Tugas UI/UX Anda telah dinilai oleh Mentor.</p>
+            <p style="padding: 10px; background: #f9f9f9; border-left: 3px solid #003366; margin-bottom: 10px;">🔔 Update jadwal: Sesi Q&A diundur ke jam 15.00.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* Logika Dropdown Profil */
+    const profileBtn = document.getElementById('profile-img-btn');
+    const profileDropdown = document.getElementById('profile-dropdown');
+
+    profileBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        profileDropdown.classList.toggle('show-imn');
+    });
+
+    /* Logika Modal Notifikasi */
+    const notifTrigger = document.getElementById('notif-trigger');
+    const notifModal = document.getElementById('notif-modal');
+    const closeNotif = document.getElementById('close-notif');
+
+    // Membuka modal saat link Notifikasi diklik
+    notifTrigger.addEventListener('click', function(e) {
+        e.preventDefault(); // Mencegah scroll ke atas
+        notifModal.style.display = 'block';
+        profileDropdown.classList.remove('show-imn'); // Menutup dropdown secara otomatis
+    });
+
+    // Menutup modal saat tombol silang (x) diklik
+    closeNotif.addEventListener('click', function() {
+        notifModal.style.display = 'none';
+    });
+
+    // Menutup elemen jika mengklik di luar area
+    window.addEventListener('click', function(e) {
+        // Klik di luar dropdown akan menutup dropdown
+        if (!profileBtn.contains(e.target)) {
+            profileDropdown.classList.remove('show-imn');
+        }
+        // Klik di area gelap (overlay) modal akan menutup modal
+        if (e.target == notifModal) {
+            notifModal.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

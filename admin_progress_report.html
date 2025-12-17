@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Progress - VINIX7 IMN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .report-section { padding: 40px 0; background-color: #f8f9fa; min-height: 100vh; }
+        .progress-table { width: 100%; border-collapse: collapse; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-radius: 8px; }
+        .progress-table th { background: #28a745; color: white; padding: 15px; text-align: left; }
+        .progress-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .progress-bar-bg { background: #e9ecef; border-radius: 10px; width: 100px; height: 10px; display: inline-block; margin-right: 10px; }
+        .progress-bar-fill { height: 100%; border-radius: 10px; background: #28a745; }
+        .badge-field { padding: 4px 8px; border-radius: 4px; font-size: 0.8em; color: white; }
+    </style>
+</head>
+<body>
+    <header class="dashboard-header" style="background-color: #172a3a; color: white; padding: 20px 0; border-bottom: 5px solid #28a745;">
+        <div class="container" style="display:flex; justify-content: space-between; align-items: center;">
+            <h1>Laporan Progres Mahasiswa</h1>
+            <a href="admin_dashboard.html" style="color: white; text-decoration: none;">&larr; Dashboard</a>
+        </div>
+    </header>
+
+    <div class="report-section">
+        <div class="container">
+            <table class="progress-table">
+                <thead>
+                    <tr>
+                        <th>Mahasiswa</th>
+                        <th>Bidang</th>
+                        <th>Modul Selesai</th>
+                        <th>Persentase</th>
+                        <th>Skor Rata-rata</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Budi Santoso</strong></td>
+                        <td><span class="badge-field" style="background:#007bff;">Web Development</span></td>
+                        <td>8 / 10</td>
+                        <td>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div> 80%
+                        </td>
+                        <td>88.5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Siti Aminah</strong></td>
+                        <td><span class="badge-field" style="background:#6f42c1;">UI/UX Design</span></td>
+                        <td>10 / 10</td>
+                        <td>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div> 100%
+                        </td>
+                        <td>94.2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dedi Kurniawan</strong></td>
+                        <td><span class="badge-field" style="background:#fd7e14;">Data Science</span></td>
+                        <td>5 / 10</td>
+                        <td>
+                            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 50%;"></div></div> 50%
+                        </td>
+                        <td>75.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

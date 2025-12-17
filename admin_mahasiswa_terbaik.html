@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atur Mahasiswa Terbaik - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .manage-section { padding: 40px 0; background-color: #f4f7f6; min-height: 100vh; }
+        .card-container { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        
+        .header-flex { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; }
+        
+        table { width: 100%; border-collapse: collapse; }
+        table th { background-color: #6f42c1; color: white; padding: 12px; text-align: left; }
+        table td { padding: 12px; border-bottom: 1px solid #eee; }
+        
+        .rank-badge { background: #ff9900; color: white; padding: 2px 8px; border-radius: 4px; font-weight: bold; }
+        .score-tag { color: #28a745; font-weight: bold; }
+        
+        .btn-action { border: none; padding: 6px; border-radius: 4px; cursor: pointer; color: white; margin-right: 5px; }
+        .btn-edit { background: #007bff; }
+        .btn-delete { background: #dc3545; }
+        .btn-add { background: #28a745; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px; display: inline-flex; align-items: center; gap: 5px; border:none; cursor:pointer;}
+
+        /* Modal Style */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+        .modal-content { background: white; margin: 10% auto; padding: 25px; width: 450px; border-radius: 10px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+    <header class="dashboard-header" style="background-color: #172a3a; color: white; padding: 20px 0; border-bottom: 5px solid #6f42c1;">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Pengaturan Mahasiswa Terbaik</h1>
+            <a href="admin_dashboard.html" style="color: white; text-decoration: none;">&larr; Kembali ke Dashboard</a>
+        </div>
+    </header>
+
+    <section class="manage-section">
+        <div class="container">
+            <div class="card-container">
+                <div class="header-flex">
+                    <div>
+                        <h2>Peringkat Mahasiswa VINIX7</h2>
+                        <p style="color: #666; font-size: 0.9em;">Urutan ini akan tampil otomatis pada bagian "Mahasiswa Terbaik" di index.html</p>
+                    </div>
+                    <button class="btn-add" onclick="openModal('add')">
+                        <span class="material-icons">add_circle</span> Tambah Kandidat
+                    </button>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Urutan</th>
+                            <th>Nama Mahasiswa</th>
+                            <th>Bidang</th>
+                            <th>Student Progress</th>
+                            <th>Total Nilai</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top-students-list">
+                        <tr>
+                            <td><span class="rank-badge">1</span></td>
+                            <td><strong>Siti Aminah</strong></td>
+                            <td>UI/UX Design</td>
+                            <td>100% Selesai</td>
+                            <td><span class="score-tag">98.5</span></td>
+                            <td>
+                                <button class="btn-action btn-edit" onclick="openModal('edit')"><span class="material-icons">edit</span></button>
+                                <button class="btn-action btn-delete" onclick="handleDelete()"><span class="material-icons">delete</span></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank-badge">2</span></td>
+                            <td><strong>Budi Santoso</strong></td>
+                            <td>Web Development</td>
+                            <td>90% Selesai</td>
+                            <td><span class="score-tag">92.0</span></td>
+                            <td>
+                                <button class="btn-action btn-edit" onclick="openModal('edit')"><span class="material-icons">edit</span></button>
+                                <button class="btn-action btn-delete" onclick="handleDelete()"><span class="material-icons">delete</span></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <div id="crudModal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Tambah Mahasiswa Terbaik</h3>
+            <hr style="margin-bottom: 20px; opacity: 0.3;">
+            <div class="form-group">
+                <label>Pilih Mahasiswa (Dari Data Mahasiswa)</label>
+                <select>
+                    <option>-- Pilih Mahasiswa --</option>
+                    <option>Andi Pratama</option>
+                    <option>Rina Wijaya</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Bidang Keahlian</label>
+                <input type="text" placeholder="Contoh: Mobile Development">
+            </div>
+            <div class="form-group">
+                <label>Input Nilai Akhir</label>
+                <input type="number" step="0.1" placeholder="0.0">
+            </div>
+            <div class="form-group">
+                <label>Urutan Tampilan</label>
+                <input type="number" placeholder="Contoh: 1">
+            </div>
+            <div style="text-align: right; margin-top: 25px;">
+                <button onclick="closeModal()" style="padding: 10px 20px; border:none; cursor:pointer;">Batal</button>
+                <button onclick="saveData()" style="padding: 10px 20px; background: #6f42c1; color: white; border:none; border-radius: 5px; cursor:pointer;">Simpan Perubahan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('crudModal');
+
+        function openModal(type) {
+            document.getElementById('modalTitle').innerText = type === 'add' ? 'Tambah Kandidat Terbaik' : 'Edit Peringkat Mahasiswa';
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        function saveData() {
+            alert('Data berhasil diperbarui! Urutan di index.html akan segera berubah.');
+            closeModal();
+        }
+
+        function handleDelete() {
+            if(confirm('Hapus mahasiswa ini dari daftar Mahasiswa Terbaik?')) {
+                alert('Berhasil dihapus.');
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+    </script>
+
+</body>
+</html>

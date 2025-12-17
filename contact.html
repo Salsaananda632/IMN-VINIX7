@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hubungi Kami - Pengajuan Keluhan VINIX7</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        /* Gaya spesifik untuk halaman kontak/keluhan */
+        .contact-page {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .contact-container h2 {
+            margin-bottom: 20px;
+            color: #172a3a;
+        }
+        .contact-container p {
+            margin-bottom: 30px;
+            color: #555;
+        }
+        .contact-container form input[type="text"],
+        .contact-container form input[type="email"],
+        .contact-container form select,
+        .contact-container form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Penting agar padding tidak melebarkan elemen */
+            font-size: 1em;
+        }
+        .contact-container form textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        .cta-imn-primary {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <section class="contact-page">
+        <div class="contact-container">
+            <h2>Formulir Pengajuan Keluhan/Bantuan</h2>
+            <p>Silakan isi detail masalah yang Anda hadapi. Tim support kami akan segera merespon keluhan Anda.</p>
+            
+            <form action="#" method="POST">
+                <input type="text" name="nama_lengkap" placeholder="Nama Lengkap" required>
+                <input type="email" name="email_kontak" placeholder="Email Kontak" required>
+                
+                <select name="kategori" required>
+                    <option value="">-- Pilih Kategori Keluhan --</option>
+                    <option value="login">Masalah Login/Akun</option>
+                    <option value="mentor">Keluhan Mengenai Mentor/Mahasiswa</option>
+                    <option value="teknis">Kendala Teknis Website</option>
+                    <option value="lainnya">Lain-lain</option>
+                </select>
+                
+                <input type="text" name="subjek" placeholder="Subjek Keluhan Singkat" required>
+                
+                <textarea name="deskripsi" placeholder="Jelaskan Keluhan Anda Secara Detail" required></textarea>
+                
+                <button type="submit" class="cta-imn-primary">KIRIM KELUHAN</button>
+            </form>
+            
+            <p style="text-align: center; font-size: 0.9em; margin-top: 25px;"><a href="index.html">← Kembali ke Beranda</a></p>
+        </div>
+    </section>
+</body>
+</html>

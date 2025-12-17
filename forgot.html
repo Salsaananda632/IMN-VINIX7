@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lupa Akun - Portal IMN VINIX7</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        /* Gaya spesifik untuk halaman lupa akun */
+        .forgot-page {
+            background-color: #eaf4f9;
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+        .forgot-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .forgot-container h2 {
+            margin-bottom: 20px;
+            color: #172a3a;
+        }
+        .forgot-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .forgot-tab {
+            flex: 1;
+            padding: 15px 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #777;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        .forgot-tab.active {
+            color: #007bff;
+            border-bottom-color: #007bff;
+        }
+        .forgot-content {
+            display: none;
+            text-align: left;
+        }
+        .forgot-content.active {
+            display: block;
+        }
+        .forgot-content input[type="text"], 
+        .forgot-content input[type="email"],
+        .forgot-content input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .forgot-content button {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .small-note {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="forgot-page">
+        <div class="forgot-container">
+            <h2>Pusat Bantuan Akun</h2>
+            
+            <div class="forgot-tabs">
+                <div class="forgot-tab active" data-id="username">Lupa Username</div>
+                <div class="forgot-tab" data-id="password">Lupa Password</div>
+            </div>
+
+            <div id="username-content" class="forgot-content active">
+                <h4>Cari Username Anda</h4>
+                <p>Masukkan Email atau Nomor Telepon terdaftar. Kami akan mengirimkan detail username Anda.</p>
+                <form action="#" method="POST">
+                    <input type="text" name="contact" placeholder="Email / Nomor Telepon Terdaftar" required>
+                    <button type="submit" class="cta-imn-primary">KIRIM DETAIL USERNAME</button>
+                    <p class="small-note">Periksa inbox email Anda atau SMS setelah tombol diklik.</p>
+                </form>
+            </div>
+
+            <div id="password-content" class="forgot-content">
+                <div id="step1-password">
+                    <h4>Reset Password (Langkah 1/2)</h4>
+                    <p>Masukkan Username atau Email Anda untuk mendapatkan tautan reset.</p>
+                    <form action="#" method="POST">
+                        <input type="text" name="user_email" placeholder="Username / Email" required>
+                        <button type="button" class="cta-imn-primary" onclick="showPasswordStep2()">KIRIM TAUTAN RESET</button>
+                        <p class="small-note">Tautan reset akan dikirimkan ke email atau SMS terdaftar Anda.</p>
+                    </form>
+                </div>
+
+                <div id="step2-password" style="display: none;">
+                    <h4>Reset Password (Langkah 2/2)</h4>
+                    <p style="color: green; font-weight: bold;">✅ Tautan terkirim! Silakan masukkan password baru Anda.</p>
+                    <form action="login.html" method="POST">
+                        <input type="password" name="new_password" placeholder="Password Baru" required>
+                        <input type="password" name="confirm_password" placeholder="Konfirmasi Password Baru" required>
+                        <button type="submit" class="cta-imn-primary">ATUR ULANG PASSWORD</button>
+                        <p class="small-note" style="color: green; font-weight: bold;">Setelah berhasil, Anda akan diarahkan ke halaman login.</p>
+                    </form>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 0.9em; margin-top: 25px;"><a href="login.html">← Kembali ke Halaman Login</a></p>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.forgot-tab');
+            const contents = document.querySelectorAll('.forgot-content');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-id');
+                    
+                    // Nonaktifkan semua tab dan konten
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Aktifkan tab dan konten yang diklik
+                    this.classList.add('active');
+                    document.getElementById(targetId + '-content').classList.add('active');
+                });
+            });
+        });
+        
+        // Fungsi simulasi untuk menampilkan langkah 2 reset password
+        function showPasswordStep2() {
+            document.getElementById('step1-password').style.display = 'none';
+            document.getElementById('step2-password').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

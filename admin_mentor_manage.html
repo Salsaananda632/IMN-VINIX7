@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Akun Mentor - Admin VINIX7 IMN</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        .admin-page { padding: 40px 0; background-color: #f0f0f5; min-height: 100vh; }
+        .admin-container { max-width: 1200px; margin: 0 auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); }
+        h2 { color: #172a3a; border-bottom: 2px solid #ff9900; padding-bottom: 10px; margin-bottom: 30px; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .data-table th, .data-table td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .data-table th { background-color: #172a3a; color: white; }
+        .data-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .action-btns a { margin-right: 5px; padding: 5px 10px; border-radius: 5px; font-size: 0.9em; text-decoration: none; color: white; display: inline-block;}
+        .edit-btn { background-color: #007bff; }
+        .delete-btn { background-color: #dc3545; }
+    </style>
+</head>
+<body>
+
+    <section class="admin-page">
+        <div class="admin-container">
+            <h2>Kelola Akun Mentor</h2>
+            <p>Total Mentor Aktif: 24</p>
+
+            <div style="text-align: right; margin-bottom: 20px;">
+                <a href="mentor_registration.html" class="cta-imn-primary" style="padding: 10px 20px; font-size: 1em;">+ Tambah Mentor Baru</a>
+            </div>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Mentor</th>
+                        <th>Email</th>
+                        <th>Bidang Keahlian</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>M001</td>
+                        <td>Dr. Budi Santoso</td>
+                        <td>budi.santo@imn.com</td>
+                        <td>Cybersecurity & Forensik</td>
+                        <td>Aktif</td>
+                        <td class="action-btns">
+                            <a href="#" class="edit-btn">Edit</a>
+                            <a href="#" class="delete-btn">Hapus</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>M002</td>
+                        <td>Siti Dewi S.Kom</td>
+                        <td>siti.dewi@imn.com</td>
+                        <td>Data Science & AI/ML</td>
+                        <td>Aktif</td>
+                        <td class="action-btns">
+                            <a href="#" class="edit-btn">Edit</a>
+                            <a href="#" class="delete-btn">Hapus</a>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+            
+            <p style="text-align: center; margin-top: 30px;"><a href="admin_dashboard.html">← Kembali ke Dashboard Admin</a></p>
+        </div>
+    </section>
+</body>
+</html>

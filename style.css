@@ -1,0 +1,500 @@
+
+/* General Reset and Base Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+}
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+h1, h2, h3 {
+    color: #172a3a; /* Deep Navy */
+}
+
+/* --- CTA BUTTONS --- */
+.cta-imn-primary {
+    display: inline-block;
+    background-color: #ff9900; /* Gold/Orange Accent */
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.cta-imn-primary:hover {
+    background-color: #cc7a00;
+}
+
+/* --- HERO SECTION --- */
+.hero-imn {
+    background-color: #172a3a; /* Deep Navy */
+    color: white;
+    padding: 120px 0 80px;
+}
+.hero-imn h1 {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+.hero-imn p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+}
+
+/* --- VALUE FOR MENTORS --- */
+.value-imn {
+    background-color: white;
+}
+.value-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+}
+.card-imn {
+    flex: 1;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background-color: #fff;
+}
+.card-imn h3 {
+    color: #007bff; /* Bright Blue Secondary Accent */
+}
+.card-imn .material-icons {
+    font-size: 3em;
+    color: #ff9900;
+    margin-bottom: 10px;
+}
+
+/* --- FLOW SECTION (Interactive) --- */
+.flow-imn {
+    background-color: #eaf4f9;
+}
+.flow-steps {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+.step {
+    padding: 15px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    border-bottom: 4px solid transparent;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.3s;
+}
+.step.active {
+    border-bottom: 4px solid #172a3a; 
+    color: #172a3a;
+}
+.flow-content-area {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.flow-content {
+    display: none;
+    text-align: left;
+}
+.flow-content.active {
+    display: block;
+}
+
+/* --- ANNOUNCEMENTS SECTION --- */
+.announcements {
+    background-color: #ffffff;
+    padding: 60px 0;
+}
+.announcements h2 {
+    color: #ff9900;
+}
+.announcement-cards {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+    justify-content: center;
+}
+.announcement-card {
+    flex: 1;
+    max-width: 350px;
+    text-align: left;
+    padding: 20px;
+    background-color: #f0f8ff; /* Light Blue BG */
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.announcement-card h4 {
+    margin-top: 0;
+    color: #172a3a;
+}
+.announcement-card .date {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85em;
+    color: #777;
+}
+
+/* --- PORTAL VIEW STYLES (Tambahan untuk Mentor/Mahasiswa) --- */
+.portal-view {
+    text-align: left;
+    margin-top: 30px;
+}
+.portal-view h3 {
+    text-align: center;
+    color: #172a3a;
+    margin-bottom: 40px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* Mentor Metrics */
+.mentor-metrics {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.metric-card {
+    flex: 1;
+    padding: 20px;
+    background-color: #eaf4f9;
+    border-radius: 8px;
+    text-align: center;
+}
+.metric-card h4 {
+    color: #007bff;
+    margin-top: 0;
+}
+.metric-card p {
+    font-size: 2em;
+    font-weight: bold;
+    color: #ff9900;
+    margin: 5px 0 0;
+}
+
+/* General Content Panel */
+.content-panel {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+.content-panel.primary-bg {
+    background-color: #fff3cd; /* Light warning color for schedules */
+    border-left: 5px solid #ff9900;
+}
+
+/* Tables for Mentor/Student View */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.data-table th {
+    background-color: #172a3a;
+    color: white;
+}
+.small-btn {
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+/* Student Info Grid */
+.student-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.student-info-grid .info-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+.student-info-grid .info-card h4 {
+    color: #007bff;
+    margin-top: 0;
+}
+.student-info-grid .score {
+    font-size: 3em;
+    font-weight: 900;
+    color: #ff9900;
+    margin: 0;
+}
+
+/* Hide initial views */
+#mentor-view, #student-view {
+    display: none;
+}
+#portal-area {
+    padding-bottom: 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* --- REGISTRATION FORM --- */
+.registration-form {
+    background-color: #f4f4f4;
+}
+.registration-form form {
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.registration-form input[type="text"], 
+.registration-form input[type="email"],
+.registration-form select,
+.registration-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+.registration-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+.small-note {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #172a3a;
+    color: #ccc;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+/* --- DASHBOARD SECTION --- */
+.dashboard-imn {
+    background-color: #f8f9fa; /* Latar belakang abu muda */
+}
+.dashboard-imn h2 {
+    margin-bottom: 40px;
+    color: #172a3a;
+}
+.dashboard-imn h3 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    color: #007bff; /* Bright Blue */
+}
+
+/* Login Options */
+.dashboard-login-options {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.cta-imn-secondary {
+    /* Gaya untuk tombol login mahasiswa, kontras dengan primary */
+    display: inline-block;
+    background-color: transparent;
+    color: #172a3a;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    border: 2px solid #172a3a; /* Deep Navy Border */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cta-imn-secondary:hover {
+    background-color: #172a3a;
+    color: white;
+}
+
+/* Filters */
+.dashboard-filters {
+    text-align: left;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #eaf4f9; /* Sama dengan flow-imn */
+    border-radius: 8px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Untuk tampilan responsif */
+}
+
+.dashboard-filters select {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+/* Data Table */
+.dashboard-data {
+    text-align: left;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.top-students-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.top-students-table th, .top-students-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.top-students-table th {
+    background-color: #ff9900; /* Gold/Orange Accent */
+    color: white;
+    font-weight: bold;
+}
+
+.top-students-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* --- FLOATING BUTTON (Bantuan/Hubungi Kami) --- */
+.floating-help-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #007bff; /* Warna Biru untuk Kontras */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 30px; /* Bentuk Pill */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 999; /* Pastikan di atas elemen lain */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.floating-help-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.floating-help-btn .material-icons {
+    font-size: 1.2em;
+}
+/* --- PROFILE DROPDOWN STYLES (NEW) --- */
+.profile-menu {
+    position: absolute;
+    top: 25px; /* Sesuaikan jarak dari atas */
+    right: 20px; /* Sesuaikan jarak dari kanan */
+    z-index: 900; /* Pastikan di atas elemen lain */
+}
+
+.profile-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #172a3a; /* Warna Ikon/Lingkaran */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.2s;
+}
+
+.profile-icon:hover {
+    background-color: #0d1e2e;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 55px; /* Di bawah ikon */
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: left;
+    overflow: hidden;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.95em;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-content a:hover {
+    background-color: #f0f0f5;
+    color: #ff9900;
+}
+
+.dropdown-content .divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 5px 0;
+}
+
+.dropdown-content .info-user {
+    padding: 10px 16px;
+    font-size: 0.85em;
+    color: #777;
+    border-bottom: 1px solid #ddd;
+}

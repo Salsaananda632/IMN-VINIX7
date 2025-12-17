@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Portal IMN VINIX7</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <style>
+        /* Gaya spesifik untuk halaman login */
+        .login-page {
+            background-color: #eaf4f9;
+            padding: 80px 0;
+            min-height: 100vh;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            color: #172a3a;
+        }
+        .role-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+        .role-tab {
+            flex: 1;
+            padding: 10px 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #555;
+            transition: color 0.3s;
+        }
+        .role-tab.active {
+            color: #ff9900;
+            border-bottom: 2px solid #ff9900;
+        }
+        .login-form {
+            display: none; /* Semua form defaultnya tersembunyi */
+        }
+        .login-form.active {
+            display: block; /* Form yang aktif akan ditampilkan */
+        }
+        .login-form form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .forgot-link {
+            display: block;
+            margin-top: 15px;
+            color: #172a3a;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="login-page">
+        <div class="login-container">
+            <h2>Login Portal IMN VINIX7</h2>
+            
+            <div class="role-tabs">
+                <div class="role-tab" data-role="mentor">Mentor</div>
+                <div class="role-tab" data-role="student">Mahasiswa</div>
+                <div class="role-tab" data-role="admin">Admin</div>
+            </div>
+
+            <div class="login-form active" id="mentor-login-form">
+                <h4>Login Mentor</h4>
+                <form action="mentor_dashboard.html" method="POST">
+                    <input type="text" name="mentor_username" placeholder="Username Mentor" required>
+                    <input type="password" name="mentor_password" placeholder="Password Mentor" required>
+                    <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI MENTOR</button>
+                </form>
+            </div>
+
+            <div class="login-form" id="student-login-form">
+                <h4>Login Mahasiswa</h4>
+                <form action="student_dashboard.html" method="POST">
+                    <input type="text" name="student_username" placeholder="NIM/Username" required>
+                    <input type="password" name="student_password" placeholder="Password Mahasiswa" required>
+                    <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI MAHASISWA</button>
+                </form>
+            </div>
+
+            <div class="login-form" id="admin-login-form">
+                <h4>Login Admin</h4>
+                <form action="admin_dashboard.html" method="POST">
+                    <input type="text" name="admin_username" placeholder="Username Admin" required>
+                    <input type="password" name="admin_password" placeholder="Password Admin" required>
+                    <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI ADMIN</button>
+                </form>
+            </div>
+
+            <a href="forgot.html" class="forgot-link">Lupa Username/Password?</a> 
+            <p style="text-align: center; font-size: 0.9em; margin-top: 15px;"><a href="index.html">← Kembali ke Beranda</a></p>
+            
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.role-tab');
+            const forms = document.querySelectorAll('.login-form');
+
+            // Fungsi untuk mengaktifkan tab dan form
+            function activateRole(role) {
+                // Nonaktifkan semua tab dan form
+                tabs.forEach(t => t.classList.remove('active'));
+                forms.forEach(f => f.classList.remove('active'));
+
+                // Aktifkan tab dan form yang sesuai
+                const activeTab = document.querySelector(`.role-tab[data-role="${role}"]`);
+                const activeForm = document.getElementById(role + '-login-form');
+
+                if (activeTab) activeTab.classList.add('active');
+                if (activeForm) activeForm.classList.add('active');
+            }
+
+            // Atur peran default saat halaman dimuat. Jika Anda ingin Admin menjadi default, ganti 'mentor' menjadi 'admin'.
+            activateRole('mentor'); // Default: Mentor
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const role = this.getAttribute('data-role');
+                    activateRole(role);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

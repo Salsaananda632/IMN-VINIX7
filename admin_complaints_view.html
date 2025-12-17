@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar Keluhan Masuk - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-view-container { padding: 40px 0; background-color: #f4f7f6; min-height: 100vh; }
+        .complaint-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .complaint-table th { background: #007bff; color: white; padding: 15px; text-align: left; }
+        .complaint-table td { padding: 15px; border-bottom: 1px solid #eee; }
+        .status-pill { padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; }
+        .urgent { background: #ffdce0; color: #af192b; }
+        .pending { background: #fff4d1; color: #856404; }
+    </style>
+</head>
+<body>
+    <header class="dashboard-header" style="background-color: #172a3a; color: white; padding: 20px; border-bottom: 5px solid #007bff;">
+        <div class="container" style="display:flex; justify-content: space-between; align-items: center;">
+            <h1>Panel Keluhan Pengguna</h1>
+            <a href="admin_dashboard.html" style="color: white; text-decoration: none;">&larr; Kembali</a>
+        </div>
+    </header>
+
+    <div class="admin-view-container">
+        <div class="container">
+            <table class="complaint-table">
+                <thead>
+                    <tr>
+                        <th>Waktu</th>
+                        <th>Nama Pengguna</th>
+                        <th>Subjek</th>
+                        <th>Pesan Keluhan</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12 Des, 09:00</td>
+                        <td>Rizky Amalia (Mahasiswa)</td>
+                        <td>Akses Modul</td>
+                        <td>"Modul Backend Node.js tidak bisa diunduh, muncul error forbidden."</td>
+                        <td><span class="status-pill urgent">Penting</span></td>
+                    </tr>
+                    <tr>
+                        <td>11 Des, 14:20</td>
+                        <td>Budi Revalno (Mentor)</td>
+                        <td>Sistem Penilaian</td>
+                        <td>"Input nilai untuk kelas UI/UX seringkali tidak tersimpan otomatis."</td>
+                        <td><span class="status-pill pending">Menunggu</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
