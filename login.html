@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css"> 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
     <style>
-        /* Gaya spesifik untuk halaman login */
         .login-page {
             background-color: #eaf4f9;
             padding: 80px 0;
@@ -44,10 +43,10 @@
             border-bottom: 2px solid #ff9900;
         }
         .login-form {
-            display: none; /* Semua form defaultnya tersembunyi */
+            display: none;
         }
         .login-form.active {
-            display: block; /* Form yang aktif akan ditampilkan */
+            display: block;
         }
         .login-form form input {
             width: 100%;
@@ -56,6 +55,20 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-sizing: border-box;
+        }
+        .cta-imn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: #172a3a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .cta-imn-primary:hover {
+            background-color: #ff9900;
         }
         .forgot-link {
             display: block;
@@ -78,51 +91,55 @@
                 <div class="role-tab" data-role="admin">Admin</div>
             </div>
 
-            <div class="login-form active" id="mentor-login-form">
+            <div class="login-form" id="mentor-login-form">
                 <h4>Login Mentor</h4>
-                <form action="mentor_dashboard.html" method="POST">
-                    <input type="text" name="mentor_username" placeholder="Username Mentor" required>
-                    <input type="password" name="mentor_password" placeholder="Password Mentor" required>
+                <form onsubmit="validasiLogin(event, 'mentor_dashboard.html')">
+                    <input type="text" placeholder="Username Mentor" required>
+                    <input type="password" placeholder="Password Mentor" required>
                     <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI MENTOR</button>
                 </form>
             </div>
 
             <div class="login-form" id="student-login-form">
                 <h4>Login Mahasiswa</h4>
-                <form action="student_dashboard.html" method="POST">
-                    <input type="text" name="student_username" placeholder="NIM/Username" required>
-                    <input type="password" name="student_password" placeholder="Password Mahasiswa" required>
+                <form onsubmit="validasiLogin(event, 'student_dashboard.html')">
+                    <input type="text" placeholder="NIM/Username" required>
+                    <input type="password" placeholder="Password Mahasiswa" required>
                     <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI MAHASISWA</button>
                 </form>
             </div>
 
             <div class="login-form" id="admin-login-form">
                 <h4>Login Admin</h4>
-                <form action="admin_dashboard.html" method="POST">
-                    <input type="text" name="admin_username" placeholder="Username Admin" required>
-                    <input type="password" name="admin_password" placeholder="Password Admin" required>
+                <form onsubmit="validasiLogin(event, 'admin_dashboard.html')">
+                    <input type="text" placeholder="Username Admin" required>
+                    <input type="password" placeholder="Password Admin" required>
                     <button type="submit" class="cta-imn-primary">LOGIN SEBAGAI ADMIN</button>
                 </form>
             </div>
 
             <a href="forgot.html" class="forgot-link">Lupa Username/Password?</a> 
             <p style="text-align: center; font-size: 0.9em; margin-top: 15px;"><a href="index.html">← Kembali ke Beranda</a></p>
-            
         </div>
     </section>
 
     <script>
+        // Fungsi untuk menangani login dan redirect
+        function validasiLogin(event, targetHalaman) {
+            event.preventDefault(); // Mencegah reload halaman
+            // Di sini Anda bisa menambahkan logika pengecekan username/password jika perlu
+            // Untuk saat ini, langsung diarahkan ke halaman tujuan agar bisa di-hosting
+            window.location.href = targetHalaman;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.role-tab');
             const forms = document.querySelectorAll('.login-form');
 
-            // Fungsi untuk mengaktifkan tab dan form
             function activateRole(role) {
-                // Nonaktifkan semua tab dan form
                 tabs.forEach(t => t.classList.remove('active'));
                 forms.forEach(f => f.classList.remove('active'));
 
-                // Aktifkan tab dan form yang sesuai
                 const activeTab = document.querySelector(`.role-tab[data-role="${role}"]`);
                 const activeForm = document.getElementById(role + '-login-form');
 
@@ -130,8 +147,8 @@
                 if (activeForm) activeForm.classList.add('active');
             }
 
-            // Atur peran default saat halaman dimuat. Jika Anda ingin Admin menjadi default, ganti 'mentor' menjadi 'admin'.
-            activateRole('mentor'); // Default: Mentor
+            // Set default aktif
+            activateRole('mentor');
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
